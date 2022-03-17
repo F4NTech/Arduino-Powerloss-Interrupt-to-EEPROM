@@ -74,7 +74,7 @@ void InterruptA() {
 }
 void PowerLoss() {
   if (digitalRead(Interrupt2) && analogRead(A0) < 920) { //920 Analog Power Value 4.5 V / Under 5V
-    EEPROM.write(0, Value);
+    EEPROM.write(0, Value);   //Save count Value to Address 0 EEPROM.
     // Serial.println("save");
     
 
