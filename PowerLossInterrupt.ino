@@ -1,9 +1,13 @@
 #include <EEPROM.h>
 
-int Interrupt2 = 3, Interrupt1 = 2;
-int NG_UP = 4, NG_DOWN = 5, Reset = 12;
+// this program to learn for simulation :D
+// farhan@datacakra.com
+// ref : @dariee on Youtube : https://www.youtube.com/watch?v=HnLKS8_OzC8. Big thanks for you _/\_
 
-int StateUp, StateDown, Value, ResState;
+int Interrupt2 = 3, Interrupt1 = 2;               // Interrupt Pin on Arduino Uno R3. (Just pin 2 and 3)
+int NG_UP = 4, NG_DOWN = 5, Reset = 12;           // Simulation Button
+
+int StateUp, StateDown, Value, ResState;          //State Var
 int countUp = 0, countDown = 0;
 int PowerState;
 
@@ -11,7 +15,7 @@ int PowerState;
 void setup() {
   Serial.begin(9600);
 
-  pinMode(A0, OUTPUT), digitalWrite(A0, HIGH); //
+  pinMode(A0, OUTPUT), digitalWrite(A0, HIGH);    //pin Powerloss get 5v when starting simulation
   delay(2000);
   
   //  EEPROM.clear();
@@ -23,7 +27,7 @@ void setup() {
   
   pinMode(Reset, INPUT_PULLUP);
 
-  pinMode(A0, INPUT); //Detect PowerLoss
+  pinMode(A0, INPUT);                               // change pin function to detect PowerLoss
   Value = EEPROM.read(0);
   
   attachInterrupt(digitalPinToInterrupt(Interrupt2), PowerLoss, LOW);
@@ -32,8 +36,9 @@ void setup() {
 }
 
 void loop() {
-  Serial.println(analogRead(A0));
-
+  //
+  //
+  //
 }
 void InterruptA() {
   StateUp = digitalRead(NG_UP), StateDown = digitalRead(NG_DOWN), ResState = digitalRead(Reset);
